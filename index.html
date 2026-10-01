@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Little Secret ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating hearts -->
+    <div class="hearts"></div>
+
+    <!-- ========================= -->
+    <!-- START SCREEN -->
+    <!-- ========================= -->
+
+    <section id="startScreen" class="screen active">
+
+        <div class="card">
+
+            <div class="emoji">💌</div>
+
+            <h1>Hey, You.</h1>
+
+            <p>
+                I made something for you.
+            </p>
+
+            <p class="small-text">
+                But... you have to solve a few things first.
+            </p>
+
+            <button onclick="startGame()">
+                Start the journey →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PUZZLE 1 -->
+    <!-- ========================= -->
+
+    <section id="puzzle1" class="screen">
+
+        <div class="card">
+
+            <span class="level">PUZZLE 01</span>
+
+            <h2>🧩 A Simple Question</h2>
+
+            <p>
+                What is the one thing<br>
+                I never get tired of seeing?
+            </p>
+
+            <div class="answers">
+
+                <button onclick="wrongAnswer(this)">
+                    Your smile
+                </button>
+
+                <button onclick="correctPuzzle1()">
+                    You
+                </button>
+
+                <button onclick="wrongAnswer(this)">
+                    Food
+                </button>
+
+            </div>
+
+            <p id="puzzle1Message" class="message"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PUZZLE 2 -->
+    <!-- ========================= -->
+
+    <section id="puzzle2" class="screen">
+
+        <div class="card">
+
+            <span class="level">PUZZLE 02</span>
+
+            <h2>🔐 A Little Secret</h2>
+
+            <p>
+                Rearrange these letters:
+            </p>
+
+            <div class="scramble">
+                O&nbsp;&nbsp;V&nbsp;&nbsp;E&nbsp;&nbsp;L
+            </div>
+
+            <p>
+                What word am I looking for?
+            </p>
+
+            <input
+                type="text"
+                id="answer2"
+                placeholder="Type your answer..."
+                autocomplete="off"
+            >
+
+            <button onclick="checkPuzzle2()">
+                Unlock
+            </button>
+
+            <p id="puzzle2Message" class="message"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PUZZLE 3 -->
+    <!-- ========================= -->
+
+    <section id="puzzle3" class="screen">
+
+        <div class="card">
+
+            <span class="level">PUZZLE 03</span>
+
+            <h2>🕵️ One Last Question</h2>
+
+            <p>
+                We have shared many memories together.
+            </p>
+
+            <p>
+                Which one is my favorite?
+            </p>
+
+            <div class="answers">
+
+                <button onclick="wrongAnswer3(this)">
+                    Our first photo
+                </button>
+
+                <button onclick="wrongAnswer3(this)">
+                    Our first date
+                </button>
+
+                <button onclick="correctPuzzle3()">
+                    Every moment with you
+                </button>
+
+            </div>
+
+            <p id="puzzle3Message" class="message"></p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+<!-- EXTRA PUZZLE ROOM -->
+<!-- ========================= -->
+
+<section id="puzzleRoom" class="screen">
+
+    <div class="card">
+
+        <span class="level">BONUS LEVEL</span>
+
+        <div class="emoji">🔐</div>
+
+        <h1>One More Thing...</h1>
+
+        <p>
+            You thought you were finished?
+        </p>
+
+        <p class="small-text">
+            There are still a few secrets left.
+        </p>
+
+        <button onclick="showScreen('puzzle4')">
+            Enter the puzzle room →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- PUZZLE 4 -->
+<!-- ========================= -->
+
+<section id="puzzle4" class="screen">
+
+    <div class="card">
+
+        <span class="level">SECRET PUZZLE 01</span>
+
+        <h2>🔢 Can You Remember?</h2>
+
+        <p>
+            What is the date that means
+            something special to us?
+        </p>
+
+        <div class="clue-box">
+            <span>HINT</span>
+
+            <p>
+                DDMMYYYY
+            </p>
+        </div>
+
+        <input
+            type="text"
+            id="answer4"
+            placeholder="DDMMYYYY"
+        >
+
+        <button onclick="checkPuzzle4()">
+            Unlock 🔓
+        </button>
+
+        <p id="puzzle4Message" class="message"></p>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- PUZZLE 5 -->
+<!-- ========================= -->
+
+<section id="puzzle5" class="screen">
+
+    <div class="card">
+
+        <span class="level">SECRET PUZZLE 02</span>
+
+        <h2>💭 One Last Memory</h2>
+
+        <p>
+            Complete this sentence:
+        </p>
+
+        <div class="clue-box">
+
+            <p class="big-text">
+                "My favorite person is..."
+            </p>
+
+        </div>
+
+        <input
+            type="text"
+            id="answer5"
+            placeholder="Type the answer..."
+        >
+
+        <button onclick="checkPuzzle5()">
+            Continue ❤️
+        </button>
+
+        <p id="puzzle5Message" class="message"></p>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- SPIN WHEEL -->
+<!-- ========================= -->
+
+<section id="spinWheel" class="screen">
+
+    <div class="card">
+
+        <span class="level">BONUS GAME 🎡</span>
+
+        <h2>Spin for a Surprise</h2>
+
+        <p>
+            Spin the wheel and see what you get ❤️
+        </p>
+
+        <div class="wheel-container">
+
+            <div class="pointer">▼</div>
+
+            <canvas id="wheel" width="320" height="320"></canvas>
+
+        </div>
+
+        <button id="spinButton" onclick="spinWheel()">
+            SPIN ❤️
+        </button>
+
+        <p id="wheelResult" class="message"></p>
+
+        <button
+            id="continueWheel"
+            onclick="showScreen('memory')"
+            style="display:none;"
+        >
+            Continue → 
+        </button>
+
+    </div>
+
+</section>
+    <!-- ========================= -->
+    <!-- MEMORY -->
+    <!-- ========================= -->
+
+    <section id="memory" class="screen">
+
+        <div class="card">
+
+            <span class="level">UNLOCKED</span>
+
+            <h2>📸 Our Little Memories</h2>
+
+            <p>
+                There are moments I wish I could
+                keep forever.
+            </p>
+
+            <div class="memory-box">
+
+                <div class="memory-photo">
+                    <img src="images/IMG-20260607-WA0279.jpg" alt="Our memory">
+                </div>
+
+                <p>
+                    "Replace this with your favorite
+                    memory together."
+                </p>
+
+            </div>
+
+            <button onclick="showFinal()">
+                There's more →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- FINAL -->
+    <!-- ========================= -->
+
+    <section id="final" class="screen">
+
+        <div class="card final-card">
+
+            <div class="big-heart">
+                ❤️
+            </div>
+
+            <h1>You've unlocked it.</h1>
+
+            <p class="final-text">
+
+                I don't really need a puzzle
+                to know the answer.
+
+                <br><br>
+
+                My favorite person is you.
+
+                <br><br>
+
+                Thank you for being part
+                of my life.
+
+            </p>
+
+            <button onclick="showSecret()">
+                One last thing...
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- SECRET -->
+    <!-- ========================= -->
+
+    <section id="secret" class="screen">
+
+        <div class="card secret-card">
+
+            <div class="firework">✨</div>
+
+            <h1>
+                I LOVE YOU ❤️
+            </h1>
+
+            <p>
+                And yes...
+            </p>
+
+            <p class="big-text">
+                You are my favorite
+                notification.
+            </p>
+
+            <button onclick="restart()">
+                Start again ↻
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
